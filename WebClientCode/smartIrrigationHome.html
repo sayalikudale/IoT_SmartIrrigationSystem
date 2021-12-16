@@ -1,0 +1,65 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Smart Irrigation System</title>
+      <link rel="stylesheet" href="style.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js" ></script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/hmac-min.js"></script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha256-min.js"></script> 
+      <script src="irrigation.js" type="text/javascript"></script>
+   
+    </head>
+   <body>
+      <div class="wrapper">
+         <h1>Smart Irrigation System</h1> 
+         <br>
+         <h3>Plant and Weather Information</h3>
+         <b> Current Moisture Level : </b> <div id="moistureLevel"></div>
+         <br>
+
+         <b> Current Weather Information : </b> <div id="weatherInfo"></div>
+         <br>
+         <b> Rain Possibility in the next 12 hours : </b> <div id="rainForecast"></div>
+         <br>
+
+         <b> Last Irrigation On : </b> <div id="irrigationTime"></div>
+         <br>
+         <b>Manual switch to activate motor : </b>
+         <!-- Rounded switch -->
+         <label class="switch">
+             <input type="checkbox" id = "motorSwitch"  onclick="toggleMotor()">
+              <span class="slider round"></span>
+         </label>
+         <div id="motorOnMsg"></div>
+         <br>
+         <br>
+
+         <h3>Update Configurations</h3>
+         <form id="connection-information-form">
+         <b>Soil Moisture Threshold:</b>
+         <input id="threshhold" type="text" name="threshhold" value="430"><br>
+         <div >
+            Normal Range : 
+            <br>
+            * Dry: 800 - 430
+            <br>
+            * Wet: 430 - 350
+            <br>
+            * Water: 350 - 260
+            <br>
+         </div>
+         <br>
+         <b> Enable advance weather sensing : </b>
+         <label class="switch">
+            <input type="checkbox" id = "weatherSensing" checked>
+             <span class="slider round"></span>
+        </label>
+         <br>
+         <input type="button" onclick="submitConfig()" value="Submit Config">
+      </form>
+
+      </div>
+   </body>
+</html>
